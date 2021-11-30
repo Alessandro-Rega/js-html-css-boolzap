@@ -16,11 +16,64 @@
 
 </head>
 <body>
-    
 
+    <div class="app">
+        <div class="row-left">
+            <!-- utente -->
+            <div class="user">
+                <div class="user-info">
+                    <img src="img/avatar_io.jpg" alt="foto utente">
+                    <span class="username">Nome Utente</span>
+                </div>
+                <div class="settings">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+            <!-- notifiche -->
+            <div class="notifications">
+                <div class="icona-bell">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div>
+                    <span>Ricevi notifiche di nuovi messaggi</span>
+                    <span>Attiva notifiche desktop</span>
+                </div>
+            </div>
+
+            <!-- cerca contatti -->
+            <div class="cerca">
+                <div class="searchbar">
+                    <div class="lente">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+            </div>
+
+            <!-- contatti -->
+            <div class="contatto selected">
+                <div class="contatto-pic">
+                    <img src="img/avatar_1.jpg" alt="foto utente">
+                </div>
+                <div class="contatto-dati">
+                    <div class="contatto-nome">
+                        <span>Michele</span>
+                    </div>
+                    <div class="contatto-testo">
+                        <span>Ciao..</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row-right"></div>
+    </div>
 
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/35fd86ea03.js" crossorigin="anonymous"></script>
 </body>
 </html>
