@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- contatti -->
-                <div v-for="utente in contacts" class="contatto">
+                <div v-for="(utente,pos) in contacts" class="contatto" :class="{selected: utente.selezionato}" @click="selezione(pos); id=pos">
                     <div class="contatto-pic">
                         <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="foto utente">
                     </div>
@@ -73,14 +73,14 @@
             <div class="row-right">
                 <!-- chat utente top -->
                 <div class="user">
-                    <div class="user-info">
-                        <img src="img/avatar_1.jpg" alt="foto utente">
+                    <div v-if="id >= 0" class="user-info">
+                        <img :src="'img/avatar' + contacts[id].avatar + '.jpg'" alt="foto utente">
                         <div class="dati">
-                            <span class="chat-username">Michele</span>
-                            <span class="accesso">Ultimo accesso oggi alle</span>
+                            <span class="chat-username">{{contacts[id].name}}</span>
+                            <span class="accesso">Ultimo accesso oggi alle {{getDate('ore')}}</span>
                         </div>
                     </div>
-                    <div class="settings">
+                    <div v-if="id >= 0" class="settings">
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip"></i>
                         <i class="fas fa-ellipsis-v"></i>
@@ -88,25 +88,30 @@
                 </div>
 
                 <!-- corpo della chat -->
-                <div class="chat-body">
-                    <div class="divisore">
-                        <div class="messaggio owner">
-                            <span class="testo">Hai portato a spasso il cane?</span>
-                            <span class="data">10/10/2020 15:30:55</span>
+                <div v-if="id >= 0" class="chat-body">
+                    <div v-for="mes in contacts[id].messages" class="divisore">
+                        <div class="messaggio" :class="[mes.status]">
+                            <span class="testo">{{mes.message}}</span>
+                            <span class="data">{{mes.date}}</span>
                         </div>
                     </div>
                 </div>
+                <div v-else class="no-chat">
+                    <span>Benvenuto</span>
+                    <span>Seleziona una chat</span>
+                </div>
 
                 <!-- chat utente bottom -->
-                <div class="text">
+                <div v-if="id >= 0" class="text">
                     <div class="emoji">
                         <i class="far fa-smile"></i>
                     </div>
                     <div class="textarea">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="testo_messaggio" @keyup.enter="inviaMessaggio()">
                     </div>
-                    <div class="audio">
-                        <i class="fas fa-microphone"></i>
+                    <div class="audio-send">
+                        <i v-if="testo_messaggio == '' " class="fas fa-microphone"></i>
+                        <i v-else class="fas fa-paper-plane" @click="inviaMessaggio()"></i>
                     </div>
                 </div>
             </div>

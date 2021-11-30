@@ -6,6 +6,7 @@ const app = new Vue({
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
+                selezionato: false,
                 messages: [{
                     date: '10/01/2020 15:30:55',
                     message: 'Hai portato a spasso il cane?',
@@ -27,6 +28,7 @@ const app = new Vue({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
+                selezionato: false,
                 messages: [{
                     date: '20/03/2020 16:30:00',
                     message: 'Ciao come stai?',
@@ -48,6 +50,7 @@ const app = new Vue({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
+                selezionato: false,
                 messages: [{
                     date: '28/03/2020 10:10:40',
                     message: 'La Marianna va in campagna',
@@ -69,6 +72,7 @@ const app = new Vue({
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
+                selezionato: false,
                 messages: [{
                     date: '10/01/2020 15:30:55',
                     message: 'Lo sai che ha aperto una nuova pizzeria?',
@@ -82,5 +86,39 @@ const app = new Vue({
                 ],
             },
         ],
+        id: -1,
+        testo_messaggio: "",
+    },
+    methods: {
+        selezione: function(pos){
+            for(let i = 0; i < this.contacts.length; i++){
+                if(i != pos)this.contacts[i].selezionato = false;
+            }
+            // if(this.contacts[pos].selezionato == false)this.contacts[pos].selezionato = true;
+            // else this.contacts[pos].selezionato = false;
+            if(this.contacts[pos].selezionato != true)this.contacts[pos].selezionato = !this.contacts[pos].selezionato;
+        },
+        inviaMessaggio: function(){
+            this.contacts[this.id].messages.push({
+                date: this.getDate(),
+                message: this.testo_messaggio,
+                status: 'sent'
+            });
+            this.testo_messaggio = "";
+        },
+        getDate: function(x) {
+            const today = new Date();
+            const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            let ora = today.getHours();
+            let minuti = today.getMinutes();
+            let secondi = today.getSeconds();
+            if(secondi < 10)secondi = '0' + secondi;
+            if(minuti < 10)minuti = '0' + minuti;
+            if(ora < 10)ora = '0' + ora;
+            const time = ora + ":" + minuti + ":" + secondi;
+            // const dateTime = date +' '+ time;
+            if(x == 'ore') return time;
+            else return date +' '+ time;
+        },
     }
 });
