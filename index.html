@@ -16,102 +16,101 @@
 
 </head>
 <body>
+        <div id="app">
+            <!-- colonna sinistra -->
+            <div class="row-left">
+                <!-- utente -->
+                <div class="user">
+                    <div class="user-info">
+                        <img src="img/avatar_io.jpg" alt="foto utente">
+                        <span class="username">Nome Utente</span>
+                    </div>
+                    <div class="settings">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <!-- notifiche -->
+                <div class="notifications">
+                    <div class="icona-bell">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div>
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span>Attiva notifiche desktop</span>
+                    </div>
+                </div>
 
-    <div class="app">
-        <!-- colonna sinistra -->
-        <div class="row-left">
-            <!-- utente -->
-            <div class="user">
-                <div class="user-info">
-                    <img src="img/avatar_io.jpg" alt="foto utente">
-                    <span class="username">Nome Utente</span>
+                <!-- cerca contatti -->
+                <div class="cerca">
+                    <div class="searchbar">
+                        <div class="lente">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
                 </div>
-                <div class="settings">
-                    <i class="fas fa-circle-notch"></i>
-                    <i class="fas fa-comment-alt"></i>
-                    <i class="fas fa-ellipsis-v"></i>
+
+                <!-- contatti -->
+                <div v-for="utente in contacts" class="contatto">
+                    <div class="contatto-pic">
+                        <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="foto utente">
+                    </div>
+                    <div class="contatto-dati">
+                        <div class="contatto-nome">
+                            <span>{{utente.name}}</span>
+                        </div>
+                        <div class="contatto-testo">
+                            <span>{{utente.messages[utente.messages.length - 1].message}}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- notifiche -->
-            <div class="notifications">
-                <div class="icona-bell">
-                    <i class="fas fa-bell-slash"></i>
-                </div>
-                <div>
-                    <span>Ricevi notifiche di nuovi messaggi</span>
-                    <span>Attiva notifiche desktop</span>
-                </div>
+
             </div>
 
-            <!-- cerca contatti -->
-            <div class="cerca">
-                <div class="searchbar">
-                    <div class="lente">
+            <!-- colonna destra -->
+            <div class="row-right">
+                <!-- chat utente top -->
+                <div class="user">
+                    <div class="user-info">
+                        <img src="img/avatar_1.jpg" alt="foto utente">
+                        <div class="dati">
+                            <span class="chat-username">Michele</span>
+                            <span class="accesso">Ultimo accesso oggi alle</span>
+                        </div>
+                    </div>
+                    <div class="settings">
                         <i class="fas fa-search"></i>
-                    </div>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
-                </div>
-            </div>
-
-            <!-- contatti -->
-            <div class="contatto selected">
-                <div class="contatto-pic">
-                    <img src="img/avatar_1.jpg" alt="foto utente">
-                </div>
-                <div class="contatto-dati">
-                    <div class="contatto-nome">
-                        <span>Michele</span>
-                    </div>
-                    <div class="contatto-testo">
-                        <span>Ciao..</span>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
-            </div>
 
-        </div>
-
-        <!-- colonna destra -->
-        <div class="row-right">
-            <!-- chat utente top -->
-            <div class="user">
-                <div class="user-info">
-                    <img src="img/avatar_1.jpg" alt="foto utente">
-                    <div class="dati">
-                        <span class="chat-username">Michele</span>
-                        <span class="accesso">Ultimo accesso oggi alle</span>
+                <!-- corpo della chat -->
+                <div class="chat-body">
+                    <div class="divisore">
+                        <div class="messaggio owner">
+                            <span class="testo">Hai portato a spasso il cane?</span>
+                            <span class="data">10/10/2020 15:30:55</span>
+                        </div>
                     </div>
                 </div>
-                <div class="settings">
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-paperclip"></i>
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>
-            </div>
 
-            <!-- corpo della chat -->
-            <div class="chat-body">
-                <div class="divisore">
-                    <div class="messaggio owner">
-                        <span class="testo">Hai portato a spasso il cane?</span>
-                        <span class="data">10/10/2020 15:30:55</span>
+                <!-- chat utente bottom -->
+                <div class="text">
+                    <div class="emoji">
+                        <i class="far fa-smile"></i>
                     </div>
-                </div>
-            </div>
-
-            <!-- chat utente bottom -->
-            <div class="text">
-                <div class="emoji">
-                    <i class="far fa-smile"></i>
-                </div>
-                <div class="textarea">
-                    <input type="text" placeholder="Scrivi un messaggio">
-                </div>
-                <div class="audio">
-                    <i class="fas fa-microphone"></i>
+                    <div class="textarea">
+                        <input type="text" placeholder="Scrivi un messaggio">
+                    </div>
+                    <div class="audio">
+                        <i class="fas fa-microphone"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

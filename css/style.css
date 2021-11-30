@@ -18,11 +18,10 @@ body{
     align-items: center;
 }
 
-.app{
+#app{
     width: 70%;
     height: 95vh;
     background-color: #fff;
-    border: 1px solid red;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -32,7 +31,6 @@ body{
 .row-left{
     width: 35%;
     height: 100%;
-    border: 1px solid blue;
 }
 
 /* utente */
@@ -42,7 +40,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid green;
     background-color: #eaeaea;
 }
 
@@ -183,7 +180,6 @@ body{
 .row-right{
     width: 65%;
     height: 100%;
-    border: 1px solid pink;
 }
 
 /* chat top*/
