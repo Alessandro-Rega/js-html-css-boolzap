@@ -210,9 +210,49 @@ body{
     width: 100%;
     height: calc(100% - 140px);
     background-image: url(../img/mine.jpg);
+    padding: 40px;
 }
 
+.divisore{
+    width: 100%;
+    height: 80px;
+}
 
+.messaggio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.messaggio::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.testo{
+    padding-bottom: 10px;
+    margin-right: 100px;
+}
+
+.data{
+    font-size: 9px;
+    color: gray;
+    align-self: flex-end;
+    padding-bottom: 0;
+}
+
+.owner{
+    background-color: #d5f9ba;
+    float: right;
+}
+
+.friend{
+    background-color: #ffffff;
+    float: left;
+}
 
 /* chat bottom */
 .text{
