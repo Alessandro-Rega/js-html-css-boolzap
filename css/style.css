@@ -146,6 +146,11 @@ body{
 }
 
 /* contatto */
+.contatti-body{
+    height: calc(100% - 70px - 80px - 45px);
+    overflow-y: scroll;
+}
+
 .contatto{
     width: 100%;
     height: 80px;
@@ -169,6 +174,14 @@ body{
     padding-top: 5px;
     font-size: 12px;
     color: #535353;
+}
+
+.contatto-testo span{
+    display: inline-block;
+    width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
 }
 
 .selected{
@@ -212,15 +225,18 @@ body{
 
 .divisore{
     width: 100%;
-    height: 80px;
+    display: inline-block;
 }
 
 .messaggio{
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     padding: 10px;
     border-radius: 10px;
+    max-width: 350px;
+    position: relative;
 }
 
 .messaggio::after{
@@ -232,13 +248,17 @@ body{
 .testo{
     padding-bottom: 10px;
     margin-right: 100px;
+    font-size: 15px;
+    text-overflow: ellipsis;
 }
 
 .data{
     font-size: 9px;
     color: gray;
-    align-self: flex-end;
-    padding-bottom: 0;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    padding: 5px 5px;
 }
 
 .sent{
