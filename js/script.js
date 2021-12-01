@@ -90,6 +90,16 @@ const app = new Vue({
         ricerca: "",
         testo_messaggio: "",
     },
+    watch: {
+        ricerca: function(){
+            for(let i = 0; i < this.contacts.length; i++){
+                const rec = this.ricerca.toUpperCase();
+                const nome = this.contacts[i].name.toUpperCase();
+                if(nome.includes(rec))this.contacts[i].visible = true;
+                else this.contacts[i].visible = false;
+            }
+        }
+    },
     methods: {
         selezione: function(pos){
             for(let i = 0; i < this.contacts.length; i++){

@@ -54,7 +54,7 @@
 
                 <!-- contatti -->
                 <div class="contatti-body">
-                    <div v-for="(utente,pos) in contacts" class="contatto" :class="{selected: utente.selezionato}" @click="selezione(pos); id=pos">
+                    <div v-if="utente.visible == true" v-for="(utente,pos) in contacts" class="contatto" :class="{selected: utente.selezionato}" @click="selezione(pos); id=pos">
                         <div class="contatto-pic">
                             <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="foto utente">
                         </div>
