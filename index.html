@@ -68,7 +68,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- colonna destra -->
@@ -90,10 +89,17 @@
                 </div>
                                 <!-- corpo della chat -->
                 <div v-if="id >= 0" class="chat-body">
-                    <div v-for="mes in contacts[id].messages" class="divisore">
-                        <div class="messaggio" :class="[mes.status]">
-                            <span class="testo">{{mes.message}}</span>
+                    <div v-for="(mes,index) in contacts[id].messages" class="divisore">
+                        <div class="messaggio" :class="[mes.status]" @mouseleave="mes.elimina = false">
+                            <span class="testo" @mouseover="mes.elimina = false">{{mes.message}}</span>
                             <span class="data">{{mes.date}}</span>
+                            <div class="tendina-del">
+                                <i class="fas fa-chevron-down" :class="mes.elimina == false ? 'visible' : ''" @click="mes.elimina = true"></i>
+                                <i class="fas fa-chevron-up" :class="mes.elimina == true ? 'visible' : ''" @click="mes.elimina = false"></i>
+                            </div>
+                            <ul class="elimina" :class="{visible : mes.elimina}">
+                                <li @click="eliminaMessaggio(index)">Elimina Messaggio</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

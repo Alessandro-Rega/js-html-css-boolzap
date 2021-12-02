@@ -149,6 +149,8 @@ body{
 .contatti-body{
     height: calc(100% - 70px - 80px - 45px);
     overflow-y: scroll;
+    scrollbar-color: lightgray white;
+    scrollbar-width: thin;
 }
 
 .contatto{
@@ -221,6 +223,8 @@ body{
     background-image: url(../img/mine.jpg);
     padding: 40px;
     overflow-y: scroll;
+    scrollbar-color: lightgray #e4dcd3;
+    scrollbar-width: thin;
 }
 
 .divisore{
@@ -259,6 +263,53 @@ body{
     bottom: 3px;
     right: 3px;
     padding: 5px 5px;
+}
+
+.tendina-del{
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 12px;
+    color: #6d6d6d;
+    cursor: pointer;
+}
+
+.messaggio.sent:hover .tendina-del{
+    display: block;
+}
+
+.tendina-del .fas{
+    display: none;
+}
+
+.tendina-del .fas.visible{
+    display: block;
+}
+
+.elimina{
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 17px;
+    width: 150px;
+    height: 32px;
+    list-style: none;
+    background-color: #fff;
+    text-align: center;
+    z-index: 999;
+    padding: 5px 0 5px 0;
+    border-radius: 10px;
+}
+
+.elimina.visible{
+    display: block;
+}
+
+.elimina li:hover{
+    background-color: rgb(224, 222, 222);
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .sent{
