@@ -15,12 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"> 
 
 </head>
-<body class="white-mode">
-        <div id="app">
+<body>
+    <div id="root" :class="white_mode == true ? 'white-mode' : 'dark-mode'">
+        <div class="app">
             <!-- colonna sinistra -->
             <div class="row-left">
                 <!-- utente -->
-                <div class="user">
+                <div class="user" @mouseleave="settings = false">
                     <div class="user-info">
                         <img src="img/avatar_io.jpg" alt="foto utente">
                         <span class="username">Nome Utente</span>
@@ -28,8 +29,12 @@
                     <div class="settings">
                         <i class="fas fa-circle-notch"></i>
                         <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                        <i class="fas fa-ellipsis-v" @click="settings = !settings"></i>
                     </div>
+                    <ul class="modalita" :class="{visible : settings}" @mouseleave="settings = false">
+                        <li @click="white_mode = true">White Mode</li>
+                        <li @click="white_mode = false">Dark mode</li>
+                    </ul>
                 </div>
                 <!-- notifiche -->
                 <div class="notifications">
@@ -123,7 +128,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/script.js"></script>

@@ -1,5 +1,5 @@
 const app = new Vue({
-    el: "#app",
+    el: "#root",
     data: {
         contacts: [
             {
@@ -95,6 +95,8 @@ const app = new Vue({
         id: -1,
         ricerca: "",
         testo_messaggio: "",
+        white_mode: true,
+        settings: false,
     },
     watch: {
         ricerca: function(){
