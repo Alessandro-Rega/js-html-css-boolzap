@@ -92,7 +92,7 @@ const app = new Vue({
                 ],
             },
         ],
-        id: 0,
+        id: -1,
         ricerca: "",
         testo_messaggio: "",
     },

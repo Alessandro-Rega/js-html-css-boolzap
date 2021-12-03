@@ -8,20 +8,76 @@ body{
     width: 100%;
     height: 100vh;
     background: linear-gradient(180deg, 
-    rgba(0,150,136,1) 0%, 
-    rgba(0,150,136,1) 15%, 
-    rgba(219,219,208,1) 15%, 
-    rgba(219,219,210,1) 100%);
+    var(--sfondo-primario) 0%, 
+    var(--sfondo-primario) 15%, 
+    var(--sfondo-secondario) 15%, 
+    var(--sfondo-secondario) 100%);
     font-family: 'Open Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* variabili */
+.dark-mode{
+    /* sfondo */
+    --sfondo-primario: rgb(0, 88, 80);
+    --sfondo-secondario: rgb(172, 172, 163);
+    /* ----------- */
+
+    /* testo */
+    --bg-testo-sent: #075e54;
+    --bg-testo-received: #474747;
+    --colore-testo: white;
+    --colore-testino: #b4b3b3;
+    --colore-testo-inv: #000;
+    /* ----------- */
+
+    /* background */
+    --bg-col: rgb(38, 38, 38);
+    --bg-col-utente: rgb(38, 38, 38);
+    --bg-selected: #e9ebeb;
+    --bg-cerca: rgb(38, 38, 38);
+    /* ----------- */
+
+    /* varie */
+    --border: rgb(83, 83, 83);
+    --invert: invert(1);
+    --scroll: #1a222b;
+    /* ----------- */
+}
+
+.white-mode{
+    /* sfondo */
+    --sfondo-primario: rgba(0,150,136,1);
+    --sfondo-secondario: rgba(219,219,208,1);
+    /* ----------- */
+    
+    /* testo */
+    --bg-testo-sent: #d5f9ba;
+    --bg-testo-received: #ffffff;
+    --colore-testo: black;
+    --colore-testino: #777676;
+    /* ----------- */
+
+    /* background */
+    --bg-col: #fff;
+    --bg-col-utente: #eaeaea;
+    --bg-selected: #e9ebeb;
+    --bg-cerca: #fafafa;
+    /* ----------- */
+
+    /* varie */
+    --border: lightgray;
+    --invert: invert(0);
+    --scroll: #e4dcd3;
+    /* ----------- */
+}
+
 #app{
     width: 70%;
     height: 95vh;
-    background-color: #fff;
+    background-color: var(--bg-col);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -40,7 +96,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #eaeaea;
+    background-color: var(--bg-col-utente);
 }
 
 .user-info{
@@ -57,6 +113,7 @@ body{
 .username{
     font-size: 15px;
     font-weight: 600;
+    color: var(--colore-testo);
 }
 
 .settings{
@@ -110,7 +167,7 @@ body{
 .cerca{
     width: 100%;
     height: 45px;
-    background-color: #fafafa;
+    background-color: var(--bg-cerca);
     display: flex;
     align-items: center;
 }
@@ -149,7 +206,7 @@ body{
 .contatti-body{
     height: calc(100% - 70px - 80px - 45px);
     overflow-y: scroll;
-    scrollbar-color: lightgray white;
+    scrollbar-color: lightgray var(--bg-col);
     scrollbar-width: thin;
 }
 
@@ -172,10 +229,14 @@ body{
     align-self: flex-start;
 }
 
+.contatto-nome{
+    color: var(--colore-testo);
+}
+
 .contatto-testo{
     padding-top: 5px;
     font-size: 12px;
-    color: #535353;
+    color: gray;
 }
 
 .contatto-testo span{
@@ -187,7 +248,11 @@ body{
 }
 
 .selected{
-    background-color: #e9ebeb;
+    background-color: var(--bg-selected);
+}
+
+.selected .contatto-dati .contatto-nome{
+    color: var(--colore-testo-inv);
 }
 
 
@@ -199,7 +264,7 @@ body{
 
 /* chat top*/
 .row-right .user{
-    border-left: 1px solid lightgray;
+    border-left: 1px solid var(--border);
 }
 
 .dati{
@@ -207,9 +272,13 @@ body{
     flex-direction: column;
 }
 
+.chat-username{
+    color: var(--colore-testo);
+}
+
 .accesso{
     font-size: 12px;
-    color: #8b9193;
+    color: var(--colore-testino);
 }
 
 .row-right .settings i{
@@ -220,11 +289,22 @@ body{
 .chat-body{
     width: 100%;
     height: calc(100% - 140px);
-    background-image: url(../img/mine.jpg);
     padding: 40px;
     overflow-y: scroll;
-    scrollbar-color: lightgray #e4dcd3;
+    scrollbar-color: lightgray var(--scroll);
     scrollbar-width: thin;
+    position: relative;
+}
+
+.chat-body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/mine.jpg);
+    filter: var(--invert);
 }
 
 .divisore{
@@ -241,6 +321,7 @@ body{
     border-radius: 10px;
     max-width: 350px;
     position: relative;
+    color: var(--colore-testo);
 }
 
 .messaggio::after{
@@ -258,7 +339,7 @@ body{
 
 .data{
     font-size: 9px;
-    color: gray;
+    color: var(--colore-testino);
     position: absolute;
     bottom: 3px;
     right: 3px;
@@ -295,7 +376,7 @@ body{
     width: 150px;
     height: 32px;
     list-style: none;
-    background-color: #fff;
+    background-color: var(--bg-col);
     text-align: center;
     z-index: 999;
     padding: 5px 0 5px 0;
@@ -307,18 +388,19 @@ body{
 }
 
 .elimina li:hover{
-    background-color: rgb(224, 222, 222);
+    background-color: var(--bg-selected);
     border-radius: 3px;
     cursor: pointer;
+    color: var(--colore-testo-inv);
 }
 
 .sent{
-    background-color: #d5f9ba;
+    background-color: var(--bg-testo-sent);
     float: right;
 }
 
 .received{
-    background-color: #ffffff;
+    background-color: var(--bg-testo-received);
     float: left;
 }
 
@@ -326,16 +408,16 @@ body{
 .text{
     width: 100%;
     height: 70px;
-    background-color: #f3eeea;
+    background-color: var(--bg-col);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 1px solid lightgray;
+    border-left: 1px solid var(--border);
 }
 
 .emoji, .audio-send{
     margin: 5px 25px;
-    color: #6d7578;
+    color: #b1b1b1;
     font-size: 23px;
     cursor: pointer;
 }
@@ -348,6 +430,7 @@ body{
     width: 100%;
     height: 40px;
     border: none;
+    border: 1px solid var(--border);
     border-radius: 5px;
     padding-left: 10px;
 }
@@ -355,11 +438,12 @@ body{
 .no-chat{
     width: 100%;
     height: calc(100% - 70px);
-    background-color: #eaeaea;
+    background-color: var(--bg-col-utente);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: var(--colore-testo);
 }
 
 .no-chat span:first-child{
