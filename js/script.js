@@ -127,6 +127,16 @@ const app = new Vue({
             });
             this.testo_messaggio = "";
         },
+        rispondi(testo) {
+            const pos = this.id;
+            let mex = "ok";
+            setTimeout(() => this.contacts[pos].messages.push({
+                date: this.getDate(),
+                message: mex,
+                status: 'received',
+                elimina: false
+            }), 3000);
+        },
         getDate: function(x) {
             const today = new Date();
             const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();

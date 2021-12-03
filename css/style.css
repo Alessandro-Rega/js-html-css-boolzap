@@ -53,6 +53,8 @@ body{
     --invert: invert(1);
     --scroll: #1a222b;
     /* ----------- */
+
+    --immagine: url("../img/mine_invert.jpg");
 }
 
 .white-mode{
@@ -80,6 +82,9 @@ body{
     --invert: invert(0);
     --scroll: #e4dcd3;
     /* ----------- */
+    
+    --immagine: url("../img/mine.jpg");
+
 }
 
 .app{
@@ -331,21 +336,11 @@ body{
     width: 100%;
     height: calc(100% - 140px);
     padding: 40px;
+    background-image: var(--immagine);
     overflow-y: scroll;
     scrollbar-color: lightgray var(--scroll);
     scrollbar-width: thin;
     position: relative;
-}
-
-.chat-body::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(../img/mine.jpg);
-    filter: var(--invert);
 }
 
 .divisore{

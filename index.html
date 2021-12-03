@@ -119,11 +119,11 @@
                         <i class="far fa-smile"></i>
                     </div>
                     <div class="textarea">
-                        <input type="text" placeholder="Scrivi un messaggio" v-model="testo_messaggio" @keyup.enter="inviaMessaggio()">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="testo_messaggio" @keyup.enter="rispondi(testo_messaggio), inviaMessaggio()">
                     </div>
                     <div class="audio-send">
                         <i v-if="testo_messaggio == '' " class="fas fa-microphone"></i>
-                        <i v-else class="fas fa-paper-plane" @click="inviaMessaggio()"></i>
+                        <i v-else class="fas fa-paper-plane" @click="rispondi(testo_messaggio), inviaMessaggio()"></i>
                     </div>
                 </div>
             </div>
