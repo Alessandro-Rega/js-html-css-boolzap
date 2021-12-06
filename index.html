@@ -59,7 +59,7 @@
 
                 <!-- contatti -->
                 <div class="contatti-body">
-                    <div v-if="utente.visible == true" v-for="(utente,pos) in contacts" class="contatto" :class="{selected: contacts[ordine[pos]].selezionato}" @click="id=ordine[pos], selezione(ordine[pos]);">
+                    <div v-if="contacts[ordine[pos]].visible == true" v-for="(utente,pos) in contacts" class="contatto" :class="{selected: contacts[ordine[pos]].selezionato}" @click="id=ordine[pos], selezione(ordine[pos]);">
                         <div class="contatto-pic">
                             <img :src="'img/avatar' + contacts[ordine[pos]].avatar + '.jpg'" alt="foto utente">
                         </div>
