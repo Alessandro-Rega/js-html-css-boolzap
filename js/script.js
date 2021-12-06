@@ -133,6 +133,27 @@ const app = new Vue({
         rispondi(testo) {
             const pos = this.id;
             let mex = "ok";
+            testo = testo.toLowerCase();
+            console.log(testo);
+            if(testo[testo.length - 1] == '?')testo = testo.replace('?', '');
+            console.log(testo);
+            switch (testo){
+                case "ciao":
+                    mex = "Ciaoooo";
+                    break;
+                case "come stai":
+                    mex = "Tutto bene, grazie";
+                    break;
+                case "ti va di uscire":
+                    mex = "Mi dispiace al momento non posso :(";
+                    break;
+                case "giochiamo":
+                    mex = "Certo, vieni su discord";
+                    break;
+                case "che fai":
+                    mex = "Niente di che, guardo un film";
+                    break;
+            }
             setTimeout(() => this.contacts[pos].messages.push({
                 date: this.getDate(),
                 message: mex,
