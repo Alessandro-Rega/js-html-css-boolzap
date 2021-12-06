@@ -127,7 +127,7 @@ const app = new Vue({
                 elimina: false
             });
             this.testo_messaggio = "";
-            this.ordine = arrayRemove(this.ordine, this.id);
+            this.ordine = this.arrayRemove(this.ordine, this.id);
             this.ordine.unshift(this.id);
         },
         rispondi(testo) {
@@ -175,13 +175,12 @@ const app = new Vue({
         },
         eliminaMessaggio: function(i_messaggio){
             this.contacts[this.id].messages.splice(i_messaggio, 1);
+        },
+        arrayRemove: function(arr, value) { 
+    
+            return arr.filter(function(ele){ 
+                return ele != value; 
+            });
         }
     }
 });
-
-function arrayRemove(arr, value) { 
-    
-    return arr.filter(function(ele){ 
-        return ele != value; 
-    });
-}
