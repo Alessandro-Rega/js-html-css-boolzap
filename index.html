@@ -59,16 +59,16 @@
 
                 <!-- contatti -->
                 <div class="contatti-body">
-                    <div v-if="utente.visible == true" v-for="(utente,pos) in contacts" class="contatto" :class="{selected: utente.selezionato}" @click="selezione(pos); id=pos">
+                    <div v-if="utente.visible == true" v-for="(utente,pos) in contacts" class="contatto" :class="{selected: contacts[ordine[pos]].selezionato}" @click="id=ordine[pos], selezione(ordine[pos]);">
                         <div class="contatto-pic">
-                            <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="foto utente">
+                            <img :src="'img/avatar' + contacts[ordine[pos]].avatar + '.jpg'" alt="foto utente">
                         </div>
                         <div class="contatto-dati">
                             <div class="contatto-nome">
-                                <span>{{utente.name}}</span>
+                                <span>{{contacts[ordine[pos]].name}}</span>
                             </div>
                             <div class="contatto-testo">
-                                <span>{{utente.messages[utente.messages.length - 1].message}}</span>
+                                <span>{{contacts[ordine[pos]].messages[contacts[ordine[pos]].messages.length - 1].message}}</span>
                             </div>
                         </div>
                     </div>

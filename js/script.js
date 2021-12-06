@@ -97,6 +97,7 @@ const app = new Vue({
         testo_messaggio: "",
         white_mode: true,
         settings: false,
+        ordine: [0,1,2,3],
     },
     watch: {
         ricerca: function(){
@@ -126,6 +127,8 @@ const app = new Vue({
                 elimina: false
             });
             this.testo_messaggio = "";
+            this.ordine = arrayRemove(this.ordine, this.id);
+            this.ordine.unshift(this.id);
         },
         rispondi(testo) {
             const pos = this.id;
@@ -156,3 +159,10 @@ const app = new Vue({
         }
     }
 });
+
+function arrayRemove(arr, value) { 
+    
+    return arr.filter(function(ele){ 
+        return ele != value; 
+    });
+}
