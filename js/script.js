@@ -132,11 +132,9 @@ const app = new Vue({
         },
         rispondi(testo) {
             const pos = this.id;
-            let mex = "ok";
+            let mex = "Non posso rispondere";
             testo = testo.toLowerCase();
-            console.log(testo);
             if(testo[testo.length - 1] == '?')testo = testo.replace('?', '');
-            console.log(testo);
             switch (testo){
                 case "ciao":
                     mex = "Ciaoooo";
